@@ -14,7 +14,7 @@ public class DataSourceProperties {
 	@Value("${spring.datasource.password}")
 	private String password;
 
-	private String driverClassName = "com.mysql.jdbc.Driver";
+	private String driverClassName = "com.mysql.cj.jdbc.Driver";
 	private int maxActive = 2000;
 	private int maxIdle = 8;
 	private int minIdle = 8;

@@ -16,13 +16,13 @@ import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("com.lianer.ib.dao")
+@MapperScan("com.example.demo.dao")
 public class MybatisDataSource {
 	private static final Logger logger = LogManager.getLogger(MybatisDataSource.class);
 	@Autowired
 	private DataSourceProperties dataSourceProperties;
 	// mybaits mapper xml搜索路径
-	private final static String mapperLocations = "classpath:com/lianer/ib/mapper/*.xml";
+	private final static String mapperLocations = "classpath:com/example/demo/mapper/*.xml";
 
 	private org.apache.tomcat.jdbc.pool.DataSource pool;
 
