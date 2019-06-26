@@ -1,4 +1,4 @@
-package com.example.demo.exeception;
+package com.example.demo.exception;
 
 
 import com.example.demo.email.Messages;

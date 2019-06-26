@@ -14,7 +14,7 @@ public class JsonResponseEntity<T>{
 		public JsonResponseEntity(ResultStatus result, T data) {
 	        super();
 	        this.code = result.getCode();
-	        this.msg = result.getDescription();
+	        this.msg = result.getMsg();
 	        this.data = data;
 	        
 	    }

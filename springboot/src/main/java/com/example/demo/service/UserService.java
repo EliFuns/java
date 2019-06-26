@@ -8,4 +8,6 @@ import com.example.demo.model.User;
  */
 public interface UserService {
     User selectByUserId(long userId);
+
+    User selectByUsername(String username);
 }

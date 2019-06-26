@@ -1,12 +1,10 @@
 package com.example.demo.controller.admin;
 
 import com.example.demo.common.ResultJson;
-import com.example.demo.email.Constants;
 import com.example.demo.email.MailMessageService;
 import com.example.demo.email.Messages;
-import com.example.demo.exeception.BizException;
+import com.example.demo.exception.BizException;
 import com.example.demo.service.UserService;
-import com.example.demo.utils.RedisClient;
 import com.example.demo.utils.ValUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.TimeUnit;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -58,8 +54,8 @@ public class MessageController{
     private MailMessageService mailMessageService;
     @Autowired
     private UserService userService;
-    @Autowired
-    protected RedisClient redisClient;
+//    @Autowired
+//    protected Jedis jedis;
 
     @ApiOperation(
             value = "获取注册验证码（无需授权）",
@@ -73,7 +69,7 @@ public class MessageController{
         }
         int code = (int) (1 + Math.random() * (999999 - 100000 + 1));
         mailMessageService.sendSimple("注册验证码", REGISTER_TEMPLATE.replaceAll("#code#", String.valueOf(code)), mail);
-        redisClient.put(Constants.REGISTER_MAIL_CODE_PREFIX + mail, code, 5L, TimeUnit.MINUTES);
+//        redisClient.put(Constants.REGISTER_MAIL_CODE_PREFIX + mail, code, 5L, TimeUnit.MINUTES);
         return ResultJson.success();
     }
 
@@ -89,7 +85,7 @@ public class MessageController{
         }
         int code = (int) (1 + Math.random() * (999999 - 100000 + 1));
         mailMessageService.sendSimple("登录验证码", EMAIL_LOGIN_TEMPLATE.replaceAll("#code#", String.valueOf(code)), mail);
-        redisClient.put(Constants.LOGIN_MAIL_CODE_PREFIX + mail, code, 5L, TimeUnit.MINUTES);
+//        redisClient.put(Constants.LOGIN_MAIL_CODE_PREFIX + mail, code, 5L, TimeUnit.MINUTES);
         return ResultJson.success();
     }
 
